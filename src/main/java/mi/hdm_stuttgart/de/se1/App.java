@@ -1,38 +1,52 @@
 package mi.hdm_stuttgart.de.se1;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
+class App {
+    static String buyCurrency = "not yet defined";
+    static String sellCurrency = "not yet defined";
+    static double amountBuy = 0;
+    private final static Scanner scan = new Scanner(System.in);
 
-/**
- * A simple http://logging.apache.org/log4j/2.x demo,
- * see file resources/log4j2.xml for configuration options
- * and A1.log containing debugging output.
- */
-
-public class App {
-    private static Logger log = LogManager.getLogger(App.class);
-
-    /**
-     * Your application's main entry point.
-     *
-     * @param args Yet unused
-     */
-    public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
-        
-        log.debug("You may configure 'src/main/resources/log4j2.xml' ");
-        log.debug("for adapting both console and 'A1.log' file output");
+    public static void main(String[] args) {
+        while (true) {
+            switch (mainMenu()) {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
+        }
     }
 
-    /**
-     * This method purely exists for providing Junit tests.
-     *
-     * @param a first parameter
-     * @param b second parameter
-     * @return the sum of both parameters.
-     */
-    public static int add(final int a, final int b) {
-        return a + b;
+    public static int mainMenu(){
+        System.out.println("*************[ Currency converter ]*************");
+        System.out.println("[0] Select currency to buy: " + buyCurrency);
+        System.out.println("[1] Select currency to sell: " + sellCurrency);
+        System.out.println("[2] Select amount to convert: " + amountBuy);
+        int option = -1;
+        do {
+            System.out.print("> Please choose an option: ");
+            try {
+                option = scan.nextInt();
+            } catch (InputMismatchException ex) {
+                System.out.println("\nSpast.");
+                System.exit(1);
+            }
+        } while (option < 0 || option > 2);
+
+        return option;
     }
 }
