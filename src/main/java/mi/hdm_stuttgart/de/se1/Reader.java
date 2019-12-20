@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Reader {
     BufferedReader bufferedReader = null;
     String line;
+    double umrechnungsfaktorVerkauf;
 
 
     private String readCurrency(String currency) throws IOException {
@@ -32,13 +33,14 @@ public class Reader {
     return currency;
     }
 
-    private double Faktor (String Waehrung){
+    private double factor (String currencySell){
 //Here the buffered reader is reading the actual line
         try {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] waehrung = line.split(";");
-                if (Waehrung.toLowerCase().equals(waehrung[0].toLowerCase())){
+                if (currencySell.toLowerCase().equals(waehrung[0].toLowerCase())){
                     final double umrechungsfaktor = Double.parseDouble(waehrung[1]);
+                    umrechnungsfaktorVerkauf = umrechungsfaktor;
                     return umrechungsfaktor;
                 }
             }
@@ -50,5 +52,17 @@ public class Reader {
         }
  return 1;
     }
+
+    private double calculateXDR(){
+        final double xdr = App.amountBuy * umrechnungsfaktorVerkauf;
+        return xdr;
+    }
+
+
+
+
+
+
+
 }
 
