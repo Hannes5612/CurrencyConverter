@@ -1,38 +1,42 @@
 package mi.hdm_stuttgart.de.se1;
 
-import java.io.*;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 class App {
-    static Currency buyCurrency;
-    static Currency sellCurrency;
-    static double amountBuy = 0;
-
-
+    private static Currency buyCurrency;
+    private static Currency sellCurrency;
+    private static double amountBuy = 0;
     private final static Scanner scan = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
+    /**
+     * While loop to accept user input in order to change the amount, buy- and sell currency.
+     */
 
-        init();
+    public static void main(String[] args) throws InterruptedException {
 
-        /**
-         * While loop to accept user input in order to change the amount, buy- and sell currency.
-         */
+        Reader.init();
 
         while (true) {
+            createSpace();
             switch (mainMenu()) {
                 case 0:
-                    buyCurrency = setCurrency();
+                    System.out.println("--Selecting currency to buy!");
+                    buyCurrency = Reader.setCurrency();
                     break;
                 case 1:
-                    sellCurrency = setCurrency();
+                    System.out.println("--Selecting currency to sell!");
+                    sellCurrency = Reader.setCurrency();
                     break;
                 case 2:
-                    System.out.println("--Enter amount to buy: ");
-                    amountBuy = scan.nextDouble();
+                    System.out.println("--Enter amount of currency to buy(>x< to go back to main menu): ");
+                    amountBuy = setBuy();
+                    break;
+                case 3:
+                    System.out.println("--Invalid input, please try again.");
+                    TimeUnit.SECONDS.sleep(2);
                     break;
             }
-            System.out.println();
         }
     }
 
@@ -42,27 +46,49 @@ class App {
      * @return values to the above while loop.
      */
 
-    public static int mainMenu() {
+    private static int mainMenu() {
 
-        double amountSell = 0;
+        double amountSell = 0.0;
         if (sellCurrency != null && amountBuy != 0.0 && buyCurrency != null) {
-            amountSell = amountBuy / buyCurrency.getRateSDR() * sellCurrency.getRateSDR();
+            amountSell = amountBuy / sellCurrency.getRateSDR() * buyCurrency.getRateSDR();
+        }
+        System.out.println("*************[ Currency converter ]*************");
+
+        if (amountSell == 0.0) {
+            if (buyCurrency == null) System.out.println(" Currency to buy: not set");
+            if (buyCurrency != null) System.out.println(" Currency to buy: " + buyCurrency);
+            if (sellCurrency == null) System.out.println("Currency to sell: not set");
+            if (sellCurrency != null) System.out.println("Currency to sell: " + sellCurrency);
+        }
+        if (amountSell != 0.0) {
+            System.out.println("Buying " + amountBuy + " of " + buyCurrency);
+            System.out.println("Selling " + Math.round(amountSell*100.00)/100.00 + " of " + sellCurrency);
+        }
+        if (amountBuy!=0.0 && (sellCurrency==null||buyCurrency==null)){
+            System.out.print("  Wanting to buy: " + amountBuy +" ");
+            if (buyCurrency!=null) {
+                System.out.println(buyCurrency) ;
+            }else{
+                System.out.println();
+            }
         }
 
+        System.out.println("------------------------------------------------");
+        System.out.println("[0] Select a currency to buy");
+        System.out.println("[1] Select a currency to sell");
+        System.out.println("[2] Select the amount to be converted");
 
-        System.out.println("*************[ Currency converter ]*************");
-        System.out.println("[0] Select a currency to buy: " + buyCurrency);
-        System.out.println("[1] Select a currency to sell: " + sellCurrency);
-        System.out.println("[2] Select the amount to convert to: " + amountBuy);
-        System.out.println("Converting " + amountSell + " " + sellCurrency + " in " + amountBuy + " " + buyCurrency);
+
         int option = -1;
-        do {
-            System.out.print("--Please choose an option: ");
-            option = scan.nextInt();
-            if (option < 0 || option > 2) {
-                System.out.println("Not a possible option, please try again.");
-            }
-        } while (option < 0 || option > 2);
+        System.out.print("--Please choose an option (>x< to exit): ");
+        String input = scan.next();
+        if (input.charAt(0) == '0') option = 0;
+        else if (input.charAt(0) == '1') option = 1;
+        else if (input.charAt(0) == '2') option = 2;
+        else if (input.charAt(0) == 'x') {
+            System.exit(0);
+        } else return 3;
+
 
         return option;
     }
@@ -72,30 +98,39 @@ class App {
      *
      * @return the found currency
      */
-
-    public static Currency setCurrency() {
-        System.out.println("Enter the currency's name or part of it: ");
-        String possibleCurrency = scan.next();
-        return new Currency("euro", 2);
-    }
-
-    public static void init() throws IOException {
-
-        BufferedReader br = new BufferedReader(new FileReader("currencys.txt"));
-        int lines = 0;
-        while (br.readLine() != null) lines++;
-        Currency[] CurrencyList= new Currency[lines];
-        br.close();
-
-        BufferedReader br2 = new BufferedReader(new FileReader("currencys.txt"));
-        int i=0;
-        String line = br2.readLine();
-        while (line != null) {
-            String[] s = line.split(";");
-            CurrencyList [i]=new Currency(s[0], Float.valueOf(s[1]));
-            line = br2.readLine();
-            i++;
+    private static double setBuy() {
+        while (true) {
+            String input = scan.next();
+            try {
+                if (input.charAt(0) == 'x') return 0.0;
+                return Double.parseDouble(input);
+            } catch (Exception n) {
+                System.out.println("No valid input, please try again(>x< to go back to main menu):");
+            }
         }
     }
+
+    /**
+     * Creating empty lines to let the console appear more tidy
+     */
+    private static void createSpace(){
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+    }
+
 
 }
