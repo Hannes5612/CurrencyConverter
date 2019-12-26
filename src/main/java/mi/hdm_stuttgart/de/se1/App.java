@@ -19,22 +19,22 @@ class App {
 
         while (true) {
             createSpace();
-            switch (mainMenu()) {
+            switch (mainMenu()) {                                                                            //main menu --> switch for giving user different options to set
                 case 0:
-                    System.out.println("--Selecting currency to buy!");
-                    buyCurrency = Reader.setCurrency();
+                    System.out.println("--Selecting currency to buy!");                                     //option for set the Currency the user want to buy
+                    buyCurrency = Reader.setCurrency();                                                     //set the currency with the setCurrency() method of the Class Reader
                     break;
                 case 1:
-                    System.out.println("--Selecting currency to sell!");
-                    sellCurrency = Reader.setCurrency();
+                    System.out.println("--Selecting currency to sell!");                                    //option for set the Currency the user wants to sell
+                    sellCurrency = Reader.setCurrency();                                                    //set the currency with the setCurrency() method of the Class "Reader"
                     break;
                 case 2:
-                    System.out.println("--Enter amount of currency to buy(>x< to go back to main menu): ");
-                    amountBuy = setBuy();
+                    System.out.println("--Enter amount of currency to buy(>x< to go back to main menu): "); //option for set an amount of money to change
+                    amountBuy = setBuy();                                                                   //set the amount to convert with the setBuy Method of the Class "App"
                     break;
                 case 3:
-                    System.out.println("--Invalid input, please try again.");
-                    TimeUnit.SECONDS.sleep(2);
+                    System.out.println("--Invalid input, please try again.");                               //case for a invalid user input -> prints the Information of an invalid input
+                    TimeUnit.SECONDS.sleep(2);                                                     //leave the message for 2 seconds before break
                     break;
             }
         }
