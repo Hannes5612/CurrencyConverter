@@ -114,22 +114,10 @@ class App {
      * Creating empty lines to let the console appear more tidy
      */
     private static void createSpace(){
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
 
+        for (int i = 0; i < 7; i++) {
+            System.out.println();
+        }
     }
 
 
