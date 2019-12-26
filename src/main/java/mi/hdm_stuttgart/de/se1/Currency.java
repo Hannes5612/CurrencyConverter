@@ -1,15 +1,15 @@
 package mi.hdm_stuttgart.de.se1;
 
 
-
 public class Currency {
     private String name;
     private double rateSDR;
 
-    Currency(String name, double rateSDR) {
-        this.name = name;
-        this.rateSDR = rateSDR;
+    Currency(String name, double rateSDR) {                                     //Constructor for the ArrayList with different Currencys and their SDR rate
+        this.name = name;                                                       //set the name
+        this.rateSDR = rateSDR;                                                 //set the SDR rate
     }
+
 
     @Override
     public String toString() {
@@ -18,17 +18,11 @@ public class Currency {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    }                                   //getter for return the Currencys name
 
     double getRateSDR() {
-        return  rateSDR;
-    }
+        return rateSDR;
+    }                                                                          //getter for return the Currencys SDR rate
+                                                                              //--> no setter needed because Currencys name and SDR rate set with the Constructor at the begin
 
-    public void setRateSDR(int rateSDR) {
-        this.rateSDR = rateSDR;
-    }
 }

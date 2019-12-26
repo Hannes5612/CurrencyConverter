@@ -113,9 +113,9 @@ class App {
     /**
      * Creating empty lines to let the console appear more tidy
      */
-    private static void createSpace(){
+    private static void createSpace(){                                                                      //method for creating spaces after setting one option in the main men
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {                                                                       //for-Loop to print 7 times an empty line and create space
             System.out.println();
         }
     }
