@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 class Reader {
 
     private final static Scanner scan = new Scanner(System.in);
-    private static Currency[] CurrencyList;
+    public static Currency[] CurrencyList;
 
     /**Reading a txt file into an array, containing the currencies listed in the txt file.
      */
@@ -52,7 +52,7 @@ class Reader {
      * @return the found currency
      */
 
-    static Currency setCurrency() throws InterruptedException {
+   public static Currency setCurrency() throws InterruptedException {
 
         System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
         String possibleCurrency = scan.next().toLowerCase();                                                //converting the input into a lower-case string
