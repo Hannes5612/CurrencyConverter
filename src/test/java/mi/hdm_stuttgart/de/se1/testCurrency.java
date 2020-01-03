@@ -15,11 +15,11 @@ public class testCurrency {
     @Test
     public void testOfCurrency() {
         final String resultCurrency = "euro";
-        final double resultSDR = 10;
+        final double resultSDR = 0.8059420000;
         Currency currency = new Currency(resultCurrency, resultSDR);
 
         Assert.assertEquals(resultCurrency, currency.getName());
-        Assert.assertEquals(resultSDR, currency.getRateSDR(), 0.5);
+        Assert.assertEquals(resultSDR, currency.getRateSDR(), 0.1);
 
     }
 
