@@ -1,6 +1,8 @@
 package mi.hdm_stuttgart.de.se1;
 
 
+import static mi.hdm_stuttgart.de.se1.App.*;
+
 public class Currency {
     private String name;
     private double rateSDR;
@@ -10,7 +12,10 @@ public class Currency {
         this.rateSDR = rateSDR;                                                 //set the SDR rate
     }
 
-
+    public static double conversion(){
+        amountSell = amountBuy / sellCurrency.getRateSDR() * buyCurrency.getRateSDR();                  //convertion in SDR rate
+        return amountSell;
+    }
     @Override
     public String toString() {
         return name;

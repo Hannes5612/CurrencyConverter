@@ -4,9 +4,10 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 class App {
-    private static Currency buyCurrency;
-    private static Currency sellCurrency;
-    private static double amountBuy = 0;
+    static Currency buyCurrency;
+    static Currency sellCurrency;
+    static double amountBuy = 0;
+    static double amountSell = 0.0;                                                                            //starting value of amountSell
     private final static Scanner scan = new Scanner(System.in);
 
     /**
@@ -47,13 +48,13 @@ class App {
      * @return values to the above while loop.
      */
 
-     static int mainMenu() {                                                                         //mainMenu method which contains all the options of buy, sell and set the amount
+     public static int mainMenu() {                                                                         //mainMenu method which contains all the options of buy, sell and set the amount
 
-        double amountSell = 0.0;                                                                            //starting value of amountSell
+
         if (sellCurrency != null && amountBuy != 0.0 && buyCurrency != null) {
-            //TODO conversion in neue Methode
-            amountSell = amountBuy / sellCurrency.getRateSDR() * buyCurrency.getRateSDR();                  //convertion in SDR rate
+            Currency.conversion();
         }
+
         System.out.println("*************[ Currency converter ]*************");                             //layout of the Currency Converter --> starting point
 
         if (amountSell == 0.0) {
