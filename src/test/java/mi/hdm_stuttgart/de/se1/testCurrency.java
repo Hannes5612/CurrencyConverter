@@ -7,7 +7,7 @@ import org.junit.Test;
  * Unit test of {@link App}.
  */
 public class testCurrency {
-
+    //TODO negativ tests
 
     /**
      * Test if Currency Array is working

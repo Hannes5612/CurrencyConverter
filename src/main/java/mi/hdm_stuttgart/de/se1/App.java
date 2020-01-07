@@ -21,7 +21,8 @@ class App {
             createSpace();
             switch (mainMenu()) {                                                                            //switch in method mainMenu() for giving user different options to set
                 case 0:
-                    System.out.println("--Selecting currency to buy!");                                     //option for set the Currency the user want to buy
+                    System.out.println("--Selecting currency to buy!");
+                    //TODO Scanner aus den Methoden raus und hier rein --> Tests der Methoden werden easy!  //option for set the Currency the user want to buy
                     buyCurrency = Reader.setCurrency();                                                     //set the currency with the setCurrency() method of the Class Reader
                     break;
                 case 1:
@@ -50,6 +51,7 @@ class App {
 
         double amountSell = 0.0;                                                                            //starting value of amountSell
         if (sellCurrency != null && amountBuy != 0.0 && buyCurrency != null) {
+            //TODO conversion in neue Methode
             amountSell = amountBuy / sellCurrency.getRateSDR() * buyCurrency.getRateSDR();                  //convertion in SDR rate
         }
         System.out.println("*************[ Currency converter ]*************");                             //layout of the Currency Converter --> starting point

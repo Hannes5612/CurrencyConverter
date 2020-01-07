@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="currencyConverter" />
+        <module name="se1-currency-converter" />
       </profile>
     </annotationProcessing>
   </component>
