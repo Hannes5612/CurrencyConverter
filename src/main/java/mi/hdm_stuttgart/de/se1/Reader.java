@@ -52,10 +52,10 @@ class Reader {
      * @return the found currency
      */
 
-   public static Currency setCurrency() throws InterruptedException {
+   public static Currency setCurrency(String possibleCurrency) throws InterruptedException {
 
         System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
-        String possibleCurrency = scan.next().toLowerCase();                                                //converting the input into a lower-case string
+                                                        //converting the input into a lower-case string
         if (possibleCurrency.charAt(0) == 'x') return null;                                                 //terminating the method with returning null in order to get back to the main menu when 'x' is entered
         int results = 0;                                                                                    //creating an integer 'results' to count the following matches
         for (Currency currency : CurrencyList) {                                                            //for-each loop with array 'CurrencyList'

@@ -23,16 +23,17 @@ class App {
             switch (mainMenu()) {                                                                            //switch in method mainMenu() for giving user different options to set
                 case 0:
                     System.out.println("--Selecting currency to buy!");
+
                     //TODO Scanner aus den Methoden raus und hier rein --> Tests der Methoden werden easy!  //option for set the Currency the user want to buy
-                    buyCurrency = Reader.setCurrency();                                                     //set the currency with the setCurrency() method of the Class Reader
+                    buyCurrency = Reader.setCurrency(scan.next().toLowerCase());                                                     //set the currency with the setCurrency() method of the Class Reader
                     break;
                 case 1:
                     System.out.println("--Selecting currency to sell!");                                    //option for set the Currency the user wants to sell
-                    sellCurrency = Reader.setCurrency();                                                    //set the currency with the setCurrency() method of the Class "Reader"
+                    sellCurrency = Reader.setCurrency(scan.next().toLowerCase());                                                    //set the currency with the setCurrency() method of the Class "Reader"
                     break;
                 case 2:
                     System.out.println("--Enter amount of currency to buy(>x< to go back to main menu): "); //option for set an amount of money to change
-                    amountBuy = setBuy();                                                                   //set the amount to convert with the setBuy Method of the Class "App"
+                    amountBuy = setBuy(scan.next());                                                                   //set the amount to convert with the setBuy Method of the Class "App"
                     break;
                 case 3:
                     System.out.println("--Invalid input, please try again.");                               //case for a invalid user input -> prints the Information of an invalid input
@@ -101,9 +102,8 @@ class App {
      *
      * @return the found currency
      */
-    private static double setBuy() {                                                                        //method for set the Buy Currency
+    private static double setBuy(String input) {                                                                        //method for set the Buy Currency
         while (true) {
-            String input = scan.next();                                                                     //grab the user input withing the Scanner
             try {
                 if (input.charAt(0) == 'x') return 0.0;                                                     //set the amount to get converted to 0 if user input is an "x"
                 return Double.parseDouble(input);                                                           //otherwise return the Double of the amount to convert
