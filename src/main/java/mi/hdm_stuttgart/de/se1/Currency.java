@@ -12,7 +12,7 @@ public class Currency {
         this.rateSDR = rateSDR;                                                 //set the SDR rate
     }
 
-    public static double conversion(){
+    public static double conversion(double amountBuy, Currency sellCurrency, Currency buyCurrency){
         amountSell = amountBuy / sellCurrency.getRateSDR() * buyCurrency.getRateSDR();                  //convertion in SDR rate
         return amountSell;
     }

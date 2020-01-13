@@ -4,8 +4,8 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 class App {
-    static Currency buyCurrency;
-    static Currency sellCurrency;
+    public static Currency buyCurrency;
+    public static Currency sellCurrency;
     static double amountBuy = 0;
     static double amountSell = 0.0;                                                                            //starting value of amountSell
     private final static Scanner scan = new Scanner(System.in);
@@ -53,7 +53,7 @@ class App {
 
 
         if (sellCurrency != null && amountBuy != 0.0 && buyCurrency != null) {
-            Currency.conversion();
+            Currency.conversion(amountBuy,sellCurrency,buyCurrency);
         }
 
         System.out.println("*************[ Currency converter ]*************");                             //layout of the Currency Converter --> starting point
