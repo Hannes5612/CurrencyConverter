@@ -22,13 +22,13 @@ class App {
             createSpace();
             switch (mainMenu()) {                                                                            //switch in method mainMenu() for giving user different options to set
                 case 0:
-                    System.out.println("--Selecting currency to buy!");
-
-                    //TODO Scanner aus den Methoden raus und hier rein --> Tests der Methoden werden easy!  //option for set the Currency the user want to buy
+                    System.out.println("--Selecting currency to buy!");                                                    //option for set the Currency the user wants to buy
+                    System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
                     buyCurrency = Reader.setCurrency(scan.next().toLowerCase());                                                     //set the currency with the setCurrency() method of the Class Reader
                     break;
                 case 1:
                     System.out.println("--Selecting currency to sell!");                                    //option for set the Currency the user wants to sell
+                    System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
                     sellCurrency = Reader.setCurrency(scan.next().toLowerCase());                                                    //set the currency with the setCurrency() method of the Class "Reader"
                     break;
                 case 2:

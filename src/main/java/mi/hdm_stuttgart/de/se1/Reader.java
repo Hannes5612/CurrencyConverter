@@ -54,7 +54,7 @@ class Reader {
 
    public static Currency setCurrency(String possibleCurrency) throws InterruptedException {
 
-        System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
+
                                                         //converting the input into a lower-case string
         if (possibleCurrency.charAt(0) == 'x') return null;                                                 //terminating the method with returning null in order to get back to the main menu when 'x' is entered
         int results = 0;                                                                                    //creating an integer 'results' to count the following matches
@@ -91,7 +91,8 @@ class Reader {
 
             while (true) {                                                                                      //while loop for exceptions
                 try {
-                    String input = scan.next();                                                                 //get input
+
+                    String input = input();                                                                 //get input
                     if (input.charAt(0) == 'x') return null;                                                    //returning null if user chooses to go back to main menu
                     int cur = Integer.parseInt(input);                                                          //parsing input into integer
                     if (cur < searchResults.length && cur >= 0) {                                               //if user input is in range of 'searchResults' index range, the belonging currency
@@ -112,6 +113,11 @@ class Reader {
             TimeUnit.SECONDS.sleep(2);                                                                  //the main menu gets displayed again after 2 seconds
             return null;
         }
+
+    }
+
+    public static String input (){
+       return scan.next();
 
     }
 }

@@ -7,7 +7,6 @@ import org.junit.Test;
  * Unit test of {@link App}.
  */
 public class testCurrency {
-    //TODO negativ tests
 
     /**
      * Test if Currency Array is working
@@ -19,10 +18,20 @@ public class testCurrency {
         Currency currency = new Currency(resultCurrency, resultSDR);
 
         Assert.assertEquals(resultCurrency, currency.getName());
-        Assert.assertEquals(resultSDR, currency.getRateSDR(), 0.1);
+        Assert.assertEquals(resultSDR, currency.getRateSDR(), 0.00000001);
 
     }
 
+    @Test
+    public void negativeTestCurrency() {
 
 
+        Currency swedishKrona = new Currency("swedisch Krona", 0.0770853000);
+        Assert.assertFalse(swedishKrona.getName().equals("swedish Krone"));
+
+    }
 }
+
+
+
+
