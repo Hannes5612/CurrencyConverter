@@ -52,10 +52,9 @@ class Reader {
      * @return the found currency
      */
 
-   public static Currency setCurrency(String possibleCurrency) throws InterruptedException {
+   public static Currency setCurrency(String possibleCurrency, int option) throws InterruptedException {
 
-
-                                                        //converting the input into a lower-case string
+                                                                                                            //converting the input into a lower-case string
         if (possibleCurrency.charAt(0) == 'x') return null;                                                 //terminating the method with returning null in order to get back to the main menu when 'x' is entered
         int results = 0;                                                                                    //creating an integer 'results' to count the following matches
         for (Currency currency : CurrencyList) {                                                            //for-each loop with array 'CurrencyList'
@@ -91,8 +90,13 @@ class Reader {
 
             while (true) {                                                                                      //while loop for exceptions
                 try {
-
-                    String input = input();                                                                 //get input
+                    String input= "";
+                    if (option==0){
+                        input = input();                                                                     //get input
+                    }
+                    if (option!=0){
+                        input= String.valueOf(option);
+                    }
                     if (input.charAt(0) == 'x') return null;                                                    //returning null if user chooses to go back to main menu
                     int cur = Integer.parseInt(input);                                                          //parsing input into integer
                     if (cur < searchResults.length && cur >= 0) {                                               //if user input is in range of 'searchResults' index range, the belonging currency

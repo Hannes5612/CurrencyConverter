@@ -24,12 +24,12 @@ class App {
                 case 0:
                     System.out.println("--Selecting currency to buy!");                                                    //option for set the Currency the user wants to buy
                     System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
-                    buyCurrency = Reader.setCurrency(scan.next().toLowerCase());                                                     //set the currency with the setCurrency() method of the Class Reader
+                    buyCurrency = Reader.setCurrency(scan.next().toLowerCase(),0);                                                     //set the currency with the setCurrency() method of the Class Reader
                     break;
                 case 1:
                     System.out.println("--Selecting currency to sell!");                                    //option for set the Currency the user wants to sell
                     System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
-                    sellCurrency = Reader.setCurrency(scan.next().toLowerCase());                                                    //set the currency with the setCurrency() method of the Class "Reader"
+                    sellCurrency = Reader.setCurrency(scan.next().toLowerCase(),0);                                                    //set the currency with the setCurrency() method of the Class "Reader"
                     break;
                 case 2:
                     System.out.println("--Enter amount of currency to buy(>x< to go back to main menu): "); //option for set an amount of money to change
