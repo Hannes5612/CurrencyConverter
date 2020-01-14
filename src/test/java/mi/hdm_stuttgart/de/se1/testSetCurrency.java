@@ -9,7 +9,7 @@ public class testSetCurrency {
         boolean condition = false;
         Reader.init();
         Currency test = new Currency("Euro", 0.8059419989585876);
-        Currency test2 = Reader.setCurrency("euro",0);
+        Currency test2 = Reader.setCurrency("euro",-1);
         if (test.getName().equals(test2.getName())&&test.getRateSDR()==test2.getRateSDR()){
             condition=true;
         }
@@ -20,7 +20,7 @@ public class testSetCurrency {
         boolean condition = false;
         Reader.init();
         Currency test = new Currency("Swiss franc", 0.7393440008163452);
-        Currency test2 = Reader.setCurrency("swiss",0);
+        Currency test2 = Reader.setCurrency("swiss",-1);
         if (test.getName().equals(test2.getName())&&test.getRateSDR()==test2.getRateSDR()){
             condition=true;
         }

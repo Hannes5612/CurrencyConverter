@@ -24,12 +24,12 @@ class App {
                 case 0:
                     System.out.println("--Selecting currency to buy!");                                                    //option for set the Currency the user wants to buy
                     System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
-                    buyCurrency = Reader.setCurrency(scan.next().toLowerCase(),0);                                                     //set the currency with the setCurrency() method of the Class Reader
+                    buyCurrency = Reader.setCurrency(scan.next().toLowerCase(), -1);                                                     //set the currency with the setCurrency() method of the Class Reader
                     break;
                 case 1:
                     System.out.println("--Selecting currency to sell!");                                    //option for set the Currency the user wants to sell
                     System.out.println("--Enter the currency's name or part of it(>x< to go back to main menu): ");     //Instruction to enter the search term
-                    sellCurrency = Reader.setCurrency(scan.next().toLowerCase(),0);                                                    //set the currency with the setCurrency() method of the Class "Reader"
+                    sellCurrency = Reader.setCurrency(scan.next().toLowerCase(), -1);                                                    //set the currency with the setCurrency() method of the Class "Reader"
                     break;
                 case 2:
                     System.out.println("--Enter amount of currency to buy(>x< to go back to main menu): "); //option for set an amount of money to change
@@ -49,30 +49,34 @@ class App {
      * @return values to the above while loop.
      */
 
-     public static int mainMenu() {                                                                         //mainMenu method which contains all the options of buy, sell and set the amount
+    public static int mainMenu() {                                                                         //mainMenu method which contains all the options of buy, sell and set the amount
 
 
         if (sellCurrency != null && amountBuy != 0.0 && buyCurrency != null) {
-            Currency.conversion(amountBuy,sellCurrency,buyCurrency);
+            Currency.conversion(amountBuy, sellCurrency, buyCurrency);
         }
 
         System.out.println("*************[ Currency converter ]*************");                             //layout of the Currency Converter --> starting point
 
         if (amountSell == 0.0) {
-            if (buyCurrency == null) System.out.println(" Currency to buy: not set");                       //if buyCurrency is empty show the information that the user can set one
-            if (buyCurrency != null) System.out.println(" Currency to buy: " + buyCurrency);                //show the selected Currency to buy if buyCurrency is not empty
-            if (sellCurrency == null) System.out.println("Currency to sell: not set");                      //if sellCurrency is empty show the information that the user can set one
-            if (sellCurrency != null) System.out.println("Currency to sell: " + sellCurrency);              //show the selected Currency to sell if sellCurrency is not empty
+            if (buyCurrency == null)
+                System.out.println(" Currency to buy: not set");                       //if buyCurrency is empty show the information that the user can set one
+            if (buyCurrency != null)
+                System.out.println(" Currency to buy: " + buyCurrency);                //show the selected Currency to buy if buyCurrency is not empty
+            if (sellCurrency == null)
+                System.out.println("Currency to sell: not set");                      //if sellCurrency is empty show the information that the user can set one
+            if (sellCurrency != null)
+                System.out.println("Currency to sell: " + sellCurrency);              //show the selected Currency to sell if sellCurrency is not empty
         }
         if (amountSell != 0.0) {
             System.out.println("Buying " + amountBuy + " of " + buyCurrency);                               //showing the selected Currency the user want to buy and the amount of it
-            System.out.println("Selling " + Math.round(amountSell*100.00)/100.00 + " of " + sellCurrency);  //showing the rounded amount of the Currency that the user wants to sell
+            System.out.println("Selling " + Math.round(amountSell * 100.00) / 100.00 + " of " + sellCurrency);  //showing the rounded amount of the Currency that the user wants to sell
         }
-        if (amountBuy!=0.0 && (sellCurrency==null||buyCurrency==null)){
-            System.out.print("  Wanting to buy: " + amountBuy +" ");                                        //showing the amount of buy if buyCurrency and sellCurrency are not set
-            if (buyCurrency!=null) {                                                                        //showing the buyCurrency if it is not empty or just print an empty line
-                System.out.println(buyCurrency) ;
-            }else{
+        if (amountBuy != 0.0 && (sellCurrency == null || buyCurrency == null)) {
+            System.out.print("  Wanting to buy: " + amountBuy + " ");                                        //showing the amount of buy if buyCurrency and sellCurrency are not set
+            if (buyCurrency != null) {                                                                        //showing the buyCurrency if it is not empty or just print an empty line
+                System.out.println(buyCurrency);
+            } else {
                 System.out.println();
             }
         }
@@ -86,12 +90,14 @@ class App {
         int option = -1;
         System.out.print("--Please choose an option (>x< to exit): ");                                      //exit option to end the program
         String input = scan.next();                                                                         //set input to the user input
-        if (input.charAt(0) == '0') option = 0;                                                             //set the int option to the input of the user
+        if (input.charAt(0) == '0')
+            option = 0;                                                             //set the int option to the input of the user
         else if (input.charAt(0) == '1') option = 1;
         else if (input.charAt(0) == '2') option = 2;
         else if (input.charAt(0) == 'x') {
             System.exit(0);                                                                          //exit in "x"-Case
-        } else return 3;                                                                                    //return 3 to repeat all in case that the user input was something completely different
+        } else
+            return 3;                                                                                    //return 3 to repeat all in case that the user input was something completely different
 
 
         return option;                                                                                      //return the chosen option
@@ -105,7 +111,8 @@ class App {
     private static double setBuy(String input) {                                                                        //method for set the Buy Currency
         while (true) {
             try {
-                if (input.charAt(0) == 'x') return 0.0;                                                     //set the amount to get converted to 0 if user input is an "x"
+                if (input.charAt(0) == 'x')
+                    return 0.0;                                                     //set the amount to get converted to 0 if user input is an "x"
                 return Double.parseDouble(input);                                                           //otherwise return the Double of the amount to convert
             } catch (Exception n) {                                                                         //catch if user input is not a double or not an x
                 System.out.println("No valid input, please try again(>x< to go back to main menu):");       //print warning message that the input was not valid
@@ -116,7 +123,7 @@ class App {
     /**
      * Creating empty lines to let the console appear more tidy
      */
-    public static void createSpace(){                                                                      //method for creating spaces after setting one option in the main men
+    public static void createSpace() {                                                                      //method for creating spaces after setting one option in the main men
 
         for (int i = 0; i < 7; i++) {                                                                       //for-Loop to print 7 times an empty line and create space
             System.out.println();

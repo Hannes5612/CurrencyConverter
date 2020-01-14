@@ -91,10 +91,10 @@ class Reader {
             while (true) {                                                                                      //while loop for exceptions
                 try {
                     String input= "";
-                    if (option==0){
+                    if (option==-1){
                         input = input();                                                                     //get input
                     }
-                    if (option!=0){
+                    if (option!=-1){
                         input= String.valueOf(option);
                     }
                     if (input.charAt(0) == 'x') return null;                                                    //returning null if user chooses to go back to main menu
