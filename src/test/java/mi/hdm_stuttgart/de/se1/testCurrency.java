@@ -3,6 +3,8 @@ package mi.hdm_stuttgart.de.se1;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.nio.channels.AsynchronousServerSocketChannel;
+
 /**
  * Unit test of {@link App}.
  */
@@ -19,6 +21,7 @@ public class testCurrency {
 
         Assert.assertEquals(resultCurrency, currency.getName());
         Assert.assertEquals(resultSDR, currency.getRateSDR(), 0.00000001);
+        Assert.assertNotNull(currency);
 
     }
 
