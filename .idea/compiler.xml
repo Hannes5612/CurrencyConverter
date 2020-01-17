@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="currencyConverter" />
-        <module name="se1-currency-converter" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="se1-currency-converter" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

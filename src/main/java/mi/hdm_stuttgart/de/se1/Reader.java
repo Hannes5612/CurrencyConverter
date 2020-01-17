@@ -1,7 +1,8 @@
 package mi.hdm_stuttgart.de.se1;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -9,6 +10,7 @@ class Reader {
 
     private final static Scanner scan = new Scanner(System.in);
     public static Currency[] CurrencyList;
+    private Object File;
 
     /**Reading a txt file into an array, containing the currencies listed in the txt file.
      */
@@ -17,7 +19,9 @@ class Reader {
         //this first part creates an array with ability to storage as many currencies, the currencys.txt file offers.
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("rms_five.txt"));   //read file
+            InputStream in = Reader.class.getClassLoader().getResourceAsStream("rms_five.txt");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));   //read file
             int lines = 0;                                                                      //integer for counting lines
             while (br.readLine() != null) lines++;                                              //ascend lines for every line that's not empty
             CurrencyList = new Currency[lines];                                                 //create array CurrencyList with lines amount of indexes
@@ -32,7 +36,8 @@ class Reader {
         //this second part converts each line of the currencys.txt file into an Currency object and adds it to the
         //CurrencyList Array
         try {
-            BufferedReader br2 = new BufferedReader(new FileReader("rms_five.txt"));   //read file
+            InputStream in = Reader.class.getClassLoader().getResourceAsStream("rms_five.txt");
+            BufferedReader br2 = new BufferedReader(new InputStreamReader(in));   //read file
             int i = 0;                                                                           //set array index 0
             String line = br2.readLine();                                                        //start reading lines
             while (line != null) {                                                               //while loop for creating the array
@@ -43,6 +48,7 @@ class Reader {
             }                                                                                    //while loop ends with an empty line
             br2.close();                                                                         //BufferedReader gets terminated
         }catch(Exception e){
+            e.printStackTrace();
             System.out.println("An error occurred: " + e.getMessage());
         }
 
@@ -54,7 +60,7 @@ class Reader {
 
    public static Currency setCurrency(String possibleCurrency, int option) throws InterruptedException {
 
-                                                                                                            //converting the input into a lower-case string
+
         if (possibleCurrency.charAt(0) == 'x') return null;                                                 //terminating the method with returning null in order to get back to the main menu when 'x' is entered
         int results = 0;                                                                                    //creating an integer 'results' to count the following matches
         for (Currency currency : CurrencyList) {                                                            //for-each loop with array 'CurrencyList'
