@@ -19,7 +19,7 @@ class App {
         Reader.init();
 
         while (true) {
-            createSpace();
+            clearConsole();
             switch (mainMenu()) {                                                                                            //switch in method mainMenu() for giving user different options to set
                 case 0:
                     System.out.println("--Selecting currency to buy!");                                                    //option for set the Currency the user wants to buy
@@ -123,10 +123,25 @@ class App {
     /**
      * Creating empty lines to let the console appear more tidy
      */
-    public static void createSpace() {                                                                      //method for creating spaces after setting one option in the main men
 
-        for (int i = 0; i < 7; i++) {                                                                       //for-Loop to print 7 times an empty line and create space
-            System.out.println();
+    public static void clearConsole()
+    {
+        try
+        {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows"))
+            {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            }
+            else
+            {
+                System.out.print("\033[H\033[2J");
+            }
+        }
+        catch (final Exception e)
+        {
+            //  Handle any exceptions.
         }
     }
 
