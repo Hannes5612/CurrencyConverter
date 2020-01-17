@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 class App {
     public static Currency buyCurrency;
     public static Currency sellCurrency;
-    static double amountBuy = 0;
+    static double amountBuy = 0.0;
     static double amountSell = 0.0;                                                                            //starting value of amountSell
     private final static Scanner scan = new Scanner(System.in);
 
@@ -69,7 +69,7 @@ class App {
                 System.out.println("Currency to sell: " + sellCurrency);              //show the selected Currency to sell if sellCurrency is not empty
         }
         if (amountSell != 0.0) {
-            System.out.println("Buying " + amountBuy + " of " + buyCurrency);                               //showing the selected Currency the user want to buy and the amount of it
+            System.out.println("Buying " + Math.round(amountBuy * 100.00) / 100.00 + " of " + buyCurrency);                               //showing the selected Currency the user want to buy and the amount of it
             System.out.println("Selling " + Math.round(amountSell * 100.00) / 100.00 + " of " + sellCurrency);  //showing the rounded amount of the Currency that the user wants to sell
         }
         if (amountBuy != 0.0 && (sellCurrency == null || buyCurrency == null)) {
